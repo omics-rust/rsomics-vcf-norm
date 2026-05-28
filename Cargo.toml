@@ -12,6 +12,11 @@ description = "Left-align and normalize VCF indels — Rust port of bcftools nor
 name = "rsomics-vcf-norm"
 path = "src/main.rs"
 
+
+[lib]
+name = "rsomics_vcf_norm"
+path = "src/lib.rs"
+doctest = false
 [dependencies]
 rsomics-common = { version = "0.6" }
 rsomics-help = { version = "0.3" }
