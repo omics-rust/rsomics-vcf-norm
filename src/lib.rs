@@ -185,15 +185,11 @@ pub fn normalize_vcf(
                 let alt_field = fields[4];
                 if alt_field.contains(',') {
                     let alts: Vec<&str> = alt_field.split(',').collect();
-                    let n = alts.len();
                     for (i, _) in alts.iter().enumerate() {
                         split_record_for_allele(&fields, &alts, i, &per_allele_keys, output)
                             .map_err(RsomicsError::Io)?;
                         stats.split += 1;
                     }
-                    // One split call per allele counts as (n-1) extra records emitted;
-                    // undo the one stat.total++ above so total stays per input record.
-                    let _ = n; // n used only for clarity; stats.split += n above
                     continue;
                 }
             }
